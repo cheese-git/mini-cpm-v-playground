@@ -1,8 +1,18 @@
 import gradio as gr
 
-def greet(name, intensity):
-  return "Hello, " + name + "!" * int(intensity)
+def infer(img, question):
+    print(img)
 
-demo = gr.Interface(fn=greet, inputs=["text", "slider"], outputs="text")
+    return "1"
+
+
+demo = gr.Interface(
+    title="MiniCPM-V 2",
+    description="A playground for MiniCPM-V",
+    fn=infer,
+    inputs=[gr.Image(label="Image"), gr.Textbox(label="Question")],
+    outputs="text",
+    article="""[https://github.com/OpenBMB/MiniCPM-V](https://github.com/OpenBMB/MiniCPM-V)""",
+)
 
 demo.launch(share=True)
