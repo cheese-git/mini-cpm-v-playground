@@ -8,6 +8,15 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.12"
 gradio = "^4.26.0"
+torch = "^2.2.2"
+transformers = "^4.39.3"
+accelerate = "^0.29.2"
+timm = "^0.9.16"
+torchvision = "^0.17.2"
+python-dotenv = "^1.0.1"
+opencv-python-headless = "^4.9.0.80"
+sentencepiece = "^0.2.0"
+protobuf = "^5.26.1"
 
 
 [build-system]
