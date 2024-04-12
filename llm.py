@@ -13,18 +13,22 @@ model = OmniLMMChat("openbmb/OmniLMM-12B")
 
 
 def infer(img, question):
+    """
+    Args:
+        img: Image file path
+    
+    """
+    img_64 = img2base64(img)
     msgs = [{"role": "user", "content": question}]
 
-    answer = model.chat({"image": img, "question": json.dumps(msgs)})
+    answer = model.chat({"image": img_64, "question": json.dumps(msgs)})
 
     return answer
 
 
 if __name__ == "__main__":
-    img = img2base64("./assets/hk_OCR.jpg")
 
-    print(img)
-
-    # answer = infer(
-
-    # )
+    answer = infer(
+      img="./assets/hk_OCR.jpg",
+      question="有几辆车"
+    )

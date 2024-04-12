@@ -1,20 +1,21 @@
 import time
 import gradio as gr
+from llm import infer
 
 
-def infer(img, question):
+def infer_with_llm(img, question):
     start_time = time.time()
-    print(img)
+    answer = infer(img, question)
     latency = time.time() - start_time
 
-    return "1", latency
+    return answer, latency
 
 
 demo = gr.Interface(
-    title="MiniCPM-V 2",
-    description="A playground for MiniCPM-V",
-    fn=infer,
-    inputs=[gr.Image(label="Image"), gr.Textbox(label="Question")],
+    title="OmniLLM-12B",
+    description="A playground for OmniLLM-12B",
+    fn=infer_with_llm,
+    inputs=[gr.Image(label="Image", type="filepath"), gr.Textbox(label="Question")],
     outputs=[
         gr.Textbox(label="Answer"),
         gr.Number(label="Latency(s)"),
