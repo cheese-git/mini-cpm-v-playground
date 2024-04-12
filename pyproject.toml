@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "mini-cpm-v-playground"
+version = "0.1.0"
+description = ""
+authors = ["Cheese <11363971+cheese-git@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+gradio = "^4.26.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
