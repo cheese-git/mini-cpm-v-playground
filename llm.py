@@ -18,9 +18,9 @@ device = (
 dtype = torch.float16 if device == "mps" else torch.bfloat16
 torch.manual_seed(0)
 
-model = OmniLMMChat("openbmb/OmniLMM-12B")
-model = model.to(device, dtype=dtype)
-
+print("Initializing model...")
+chat_model = OmniLMMChat("openbmb/MiniCPM-V-2")
+print("Model initialized.")
 
 def infer(img, question):
     """
@@ -30,8 +30,10 @@ def infer(img, question):
     """
     img_64 = img2base64(img)
     msgs = [{"role": "user", "content": question}]
+    inputs = {"image": img_64, "question": json.dumps(msgs)}
 
-    answer = model.chat({"image": img_64, "question": json.dumps(msgs)})
+    print("Start infering...")
+    answer = chat_model.chat(inputs)
 
     return answer
 
@@ -39,3 +41,4 @@ def infer(img, question):
 if __name__ == "__main__":
 
     answer = infer(img="./assets/hk_OCR.jpg", question="有几辆车")
+    print(answer)
